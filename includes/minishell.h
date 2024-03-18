@@ -6,7 +6,7 @@
 /*   By: njeanbou <njeanbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:51:36 by njeanbou          #+#    #+#             */
-/*   Updated: 2024/03/12 16:12:24 by njeanbou         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:01:41 by njeanbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+# include <stdbool.h>
+# include <stdio.h>
 # include <sys/types.h>
 # include <dirent.h>
 # include <signal.h>
@@ -36,5 +38,44 @@
 // EXIT CMD
 
 // CD CMD
+
+/*sert a determiner comment les commandes doivent etre traiter
+lors de l'analyse et l'execution*/
+typedef enum	e_operator {
+	NONE,
+	RDR_OUT_REMPLACE,
+	RDR_OUT_APPEND,
+	RDR_INPUT,
+	RDR_INPUT_UNTIL,
+	PIPE,
+}				t_operator;
+
+/*represente chaque commande ou declaration entree par le user*/
+typedef struct s_statement {
+	int					argc;
+	char				**argv;
+	t_operator			operator;
+	struct s_statement	*next;
+}						t_statement;
+
+/*sert a stocker et gerer les variable d'environement*/
+typedef struct s_vlst {
+	char			*var_name;
+	char			*var_value;
+	bool			is_exported;
+	struct s_vlst	*next;
+}					t_vlst;
+
+/*sert a stocker et gerer les donne globales du shell
+(contient les autre structure)*/
+typedef struct s_data {
+	char		**envp;
+	t_vlst		*envp_lst;
+	t_statement	*head;
+}				t_data;
+
+
+//utils
+char	*clean_input(char *s1, char const *set);
 
 #endif
