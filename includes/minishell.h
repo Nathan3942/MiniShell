@@ -6,7 +6,7 @@
 /*   By: njeanbou <njeanbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:51:36 by njeanbou          #+#    #+#             */
-/*   Updated: 2024/03/13 16:01:41 by njeanbou         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:53:20 by njeanbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 
 /*sert a determiner comment les commandes doivent etre traiter
 lors de l'analyse et l'execution*/
-typedef enum	e_operator {
+typedef enum e_operator {
 	NONE,
 	RDR_OUT_REMPLACE,
 	RDR_OUT_APPEND,
@@ -75,7 +75,17 @@ typedef struct s_data {
 }				t_data;
 
 
+//cmd
+int		cmd_echo(t_statement *statement, bool has_n);
+int		cmd_pwd(void);
+
 //utils
 char	*clean_input(char *s1, char const *set);
+bool	is_valid_id(char *str);
+bool	streq(char *str1, char	*str2);
+
+t_vlst	*v_new_node(char *var_name, char *var_value, bool is_exported);
+t_vlst	*v_lstlast(t_vlst *node);
+void	v_lstadd_back(t_vlst **head, t_vlst *new);
 
 #endif
