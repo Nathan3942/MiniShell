@@ -6,7 +6,7 @@
 /*   By: njeanbou <njeanbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:48:37 by njeanbou          #+#    #+#             */
-/*   Updated: 2024/05/28 15:16:20 by njeanbou         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:41:20 by njeanbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ int	ms_cd(t_params *para, t_env **env)
 	char	*tmp;
 	char	*path;
 
-	if (para->com[1][0] == '~' && para->com[1][1] == '\0')
+	if (para->com[1] == NULL || para->com[1][0] == '~' &&
+		para->com[1][1] == '\0')
 		path = recherche_env("HOME", env);
 	else if (para->com[1][0] == '-' && para->com[1][1] == '\0')
 		path = "..";

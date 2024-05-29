@@ -6,7 +6,7 @@
 /*   By: njeanbou <njeanbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:52:31 by njeanbou          #+#    #+#             */
-/*   Updated: 2024/05/28 17:16:25 by njeanbou         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:47:47 by njeanbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,15 @@ int	main(int argc, char **argv, char **env)
 		put->input = NULL;
 		put->output = NULL;
 		input = get_input();
-		//printf("lala%s\n", input);
 		if (input != NULL)
 		{
 			add_history(input);
 			error = set_para(&para, input, &lstenv, &put);
 			if (error == 0)
 			{
-				//print_all(&para, &lstenv, &put);
+				print_all(&para, &lstenv, &put);
 				ms_exec_loop(data, para, put, &lstenv);
+				printf("exec ok\n");
 				free_all(&para, &put);
 			}
 			else

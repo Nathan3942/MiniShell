@@ -6,7 +6,7 @@
 /*   By: njeanbou <njeanbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 23:17:22 by ichpakov          #+#    #+#             */
-/*   Updated: 2024/05/28 17:10:09 by njeanbou         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:04:49 by njeanbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,22 @@ static int	count_env_maillon(t_env *env)
 
 	len = 0;
 	i = 0;
-	while (env->env_name[i] != '\0')
+	if (env->is_exported == true)
 	{
-		len++;
-		i++;
-	}
-	i = 0;
-	while (env->env_value[i] != '\0')
-	{
-		len++;
-		i++;
+		while (env->env_name[i] != '\0')
+		{
+			len++;
+			i++;
+		}
+		i = 0;
+		if (env->env_value != NULL)
+		{
+			while (env->env_value[i] != '\0')
+			{
+				len++;
+				i++;
+			}
+		}
 	}
 	return (len + 1);
 }
@@ -72,26 +78,30 @@ char	**get_env(t_env **env)
 
 int	ms_exec_class(t_params *cmds, t_put *put, t_env **env)
 {
-	if (cmds->com[1] != NULL || cmds->com[1][0] == '-')
+	if (ft_strequal(cmds->com[0], "cd") == 0 && cmds->com[1] != NULL)
 	{
-		if (echo_checker(cmds->com) == 0)
-			return (exec_error(3));
-		else
-			ms_echo(cmds);
+		if (cmds->com[1][0] == '-')
+		{
+			if (echo_checker(cmds->com) == 0)
+				return (exec_error(3));
+			else
+				ms_echo(cmds);
+		}
 	}
-	else if (ft_strcmp(cmds->com[0], "cd"))
+	if (ft_strequal(cmds->com[0], "cd") == 0)
 		ms_cd(cmds, env);
-	else if (ft_strcmp(cmds->com[0], "pdw"))
+	else if (ft_strequal(cmds->com[0], "pdw") == 0)
 		ms_pwd();
-	else if (ft_strcmp(cmds->com[0], "export"))
+	else if (ft_strequal(cmds->com[0], "export") == 0)
 		ms_export(cmds, env);
-	else if (ft_strcmp(cmds->com[0], "unset"))
+	else if (ft_strequal(cmds->com[0], "unset") == 0)
 		ms_unset(cmds, env);
-	else if (ft_strcmp(cmds->com[0], "env"))
+	else if (ft_strequal(cmds->com[0], "env") == 0)
 		ms_env(env);
-	else if (ft_strcmp(cmds->com[0], "exit"))
+	else if (ft_strequal(cmds->com[0], "exit") == 0)
 		ms_exit(&cmds, &put, env);
-	ms_exec(cmds, get_env(env));
+	else
+		ms_exec(cmds, get_env(env));
 	return (0);
 }
 

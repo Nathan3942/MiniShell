@@ -6,7 +6,7 @@
 /*   By: njeanbou <njeanbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 16:11:22 by njeanbou          #+#    #+#             */
-/*   Updated: 2024/05/28 16:59:44 by njeanbou         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:34:05 by njeanbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,11 @@ void	refactor_com(t_params *para, t_put *put)
 		z = count_com(para, put);
 		com = set_com(para, z, put);
 		para->com = com;
+		if (para->next != NULL)
+			para->out_red = PIPE;
 		para = para->next;
+		if (para != NULL)
+			para->inp_red = PIPE;
 	}
 }
 
@@ -95,7 +99,6 @@ void	init_com(t_params **para, char **com, t_put **put, t_env **env)
 	ft_doc(para);
 	set_var(para, env);
 	set_varbis(para, env);
-	//print_com(para);
 }
 
 int	set_para(t_params **param, char *input, t_env **env, t_put **put)

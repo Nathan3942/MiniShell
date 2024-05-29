@@ -6,7 +6,7 @@
 /*   By: njeanbou <njeanbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 04:04:52 by njeanbou          #+#    #+#             */
-/*   Updated: 2024/05/28 15:06:21 by njeanbou         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:52:08 by njeanbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*heredoc(char *exit)
 		doc = readline("heredoc> ");
 		if (ft_strstr(doc, exit) == doc && ft_strlen(doc) == ft_strlen(exit))
 			break ;
-		doctmp = ft_strjoin_c(doctmp, doc, ' ');
+		doctmp = ft_strjoin_c(doctmp, doc, '\n');
 	}
 	return (doctmp);
 }

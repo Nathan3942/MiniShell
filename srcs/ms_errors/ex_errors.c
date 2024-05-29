@@ -6,13 +6,13 @@
 /*   By: njeanbou <njeanbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 23:33:35 by ichpakov          #+#    #+#             */
-/*   Updated: 2024/05/28 15:53:27 by njeanbou         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:50:05 by njeanbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int		ft_errors(char *str)
+int	ft_errors(char *str)
 {
 	write(2, str, ft_strlen(str));
 	return (0);

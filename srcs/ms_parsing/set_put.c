@@ -6,7 +6,7 @@
 /*   By: njeanbou <njeanbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 05:37:13 by njeanbou          #+#    #+#             */
-/*   Updated: 2024/05/28 13:53:27 by njeanbou         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:34:07 by njeanbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	set_enum(t_params **para)
 			else if (head->com[i][1] == '\0')
 				head->out_red = sortie1;
 		}
-		if (head->next != NULL)
-			head->out_red = PIPE;
+		// if (head->next != NULL)
+		// 	head->out_red = PIPE;
 		i++;
 	}
 }

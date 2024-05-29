@@ -6,7 +6,7 @@
 /*   By: njeanbou <njeanbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 03:21:39 by njeanbou          #+#    #+#             */
-/*   Updated: 2024/05/28 17:10:23 by njeanbou         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:34:56 by njeanbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	print_all(t_params **para, t_env **env, t_put **put)
 			printf("la commande possede un <\n");
 		else if (headp->inp_red == entre2)
 			printf("la commande possede un <<\n");
+		else if (headp->inp_red == PIPE)
+			printf("la commande possede un PIPE d'entre\n");
 		else
 			printf("la commande na pas de redirection d'entre\n");
 		
@@ -52,6 +54,8 @@ void	print_all(t_params **para, t_env **env, t_put **put)
 			printf("la commande possede un >\n");
 		else if (headp->out_red == sortie2)
 			printf("la commande possede un >>\n");
+		else if (headp->out_red == PIPE)
+			printf("la commande possede un PIPE de sortie\n");
 		else
 			printf("la commande na pas de redirection de sortie\n");
 		
