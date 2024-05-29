@@ -6,7 +6,7 @@
 /*   By: njeanbou <njeanbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:41:27 by njeanbou          #+#    #+#             */
-/*   Updated: 2024/05/29 15:14:13 by njeanbou         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:23:38 by njeanbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	free_env(t_env **env)
 	return ;
 }
 
-void	ms_exit(t_params **para, t_put **put, t_env **env)
+void	ms_exit(t_params *para, t_put *put, t_env **env)
 {
 	printf("KAKAAAA\n");
-	if (*para != NULL && (*para)->com != NULL && (*para)->com[1] != NULL)
+	if (para != NULL && para->com != NULL && para->com[1] != NULL)
 	{
 		free_all(para, put);
 		free_env(env);
-		exit(ft_atoi((*para)->com[1]));
+		exit(ft_atoi(para->com[1]));
 	}
 	else
 	{

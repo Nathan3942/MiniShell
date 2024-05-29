@@ -6,7 +6,7 @@
 /*   By: njeanbou <njeanbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:51:36 by njeanbou          #+#    #+#             */
-/*   Updated: 2024/05/28 17:10:32 by njeanbou         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:21:25 by njeanbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ typedef struct s_env {
 
 typedef struct s_data
 {
-	int		p_in;
-	int		p_out;
+	int		p_fd[2];
 	int		fd_in;
 	int		fd_out;
 	pid_t	pid;
@@ -71,7 +70,7 @@ typedef struct s_data
 int		ms_cd(t_params *para, t_env **env);
 int		ms_echo(t_params *para);
 int		ms_env(t_env **env);
-void	ms_exit(t_params **para, t_put **put, t_env **env);
+void	ms_exit(t_params *para, t_put *put, t_env **env);
 int		ms_export(t_params *para, t_env **env);
 int		ms_pwd(void);
 int		ms_unset(t_params *para, t_env **env);
@@ -120,7 +119,7 @@ char	*ft_strjoin_sp(char const *s1, char *s2);
 char	**split_var(char *str);
 int		count_wd_var(char *str);
 char	*clean_var(char *var);
-void	free_all(t_params **para, t_put **put);
+void	free_all(t_params *para, t_put *put);
 t_env	*ft_lstlast_env(t_env *lst);
 void	ft_lstadd_back_env(t_env **lst, t_env *new);
 int		ft_lstsize_env(t_env *lst);
