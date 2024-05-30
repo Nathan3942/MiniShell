@@ -6,7 +6,7 @@
 /*   By: njeanbou <njeanbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:14 by ichpakov          #+#    #+#             */
-/*   Updated: 2024/05/28 16:18:46 by njeanbou         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:14:15 by njeanbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*get_path(char *cmd, char **env)
 
 	i = -1;
 	allpath = ft_split(my_getenv("PATH", env), ':');
-	printf("%s\n", allpath[0]);
+	//printf("%s\n", allpath[0]);
 	s_cmd = ft_split(cmd, ' ');
 	while (allpath[++i])
 	{
